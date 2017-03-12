@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>require实现原理分析</title>
+</head>
+<body>
+	
+</body>
+<script src="assets/require.js"></script>
+<script>
+	// 函数对象 调用 this指向this
+	require.config({//配置 多个依赖为paths 单个为path
+		// paths:["assets/js/","assets/plug/"]
+		path:"assets/js/"
+	})
+	//函数 在调用的时候 this指向window
+	var module1 = require("module1");//可以看出require本身就是一个函数
+	var module2 = require("module2");
+	// // 依赖更多。。。。。。
+	var test = require("testModule")
+	module1.test();
+	module2.demo();
+	test.hello();
+	console.log(require.version())//获得版本号
+</script>
+</html>
